@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <script
+      src="https://cdn.socket.io/4.4.0/socket.io.min.js"
+      integrity="sha384-1fOn6VtTq3PWwfsOrk45LnYcGosJwzMHv+Xh/Jx5303FVOXzEnw0EpLv30mtjmlj"
+      crossorigin="anonymous"
+    ></script> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital@1&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+      crossorigin="anonymous"
+    />
+    <script src="dist/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="ox.css" />
+    <!--load socket.io in client side-->
+    <script src="/socket.io/socket.io.js"></script>
+    <title>tic tac toe</title>
+  </head>
+  <body>
+    <header class="display-1 text-center mb-5 fw-bold">tic tac toe</header>
+    <div class="container py-5">
+      <div class="row">
+        <div
+          class="col-lg-6 d-flex flex-column align-items-center gameBox mb-5"
+        >
+          <div class="row">
+            <div class="column d-flex justify-content-between">
+              <div
+                data-num="0"
+                class="
+                  gridBox
+                  w-100
+                  d-flex
+                  justify-content-center
+                  align-items-center
+                "
+                disabled="disabled"
+              >
+                <svg
+                  class="nineSvg"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="90"
+                  height="90"
+                ></svg>
+              </div>
+              <div
+                data-num="1"
+                class="
+                  gridBox
+                  w-100
+                  d-flex
+                  justify-content-center
+                  align-items-center
+                  display-1
+                  border-start border-end border-5 border-dark
+                "
+              >
+                <svg
+                  class="nineSvg"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="90"
+                  height="90"
+                ></svg>
+              </div>
+              <div
+                data-num="2"
+                class="
+                  gridBox
+                  w-100
+                  d-flex
+                  justify-content-center
+                  align-items-center
+                  display-1
+                "
+              >
+                <svg
+                  class="nineSvg"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="90"
+                  height="90"
+                ></svg>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="column d-flex justify-content-between">
+              <div
+                data-num="3"
+                class="
+                  gridBox
+                  w-100
+                  d-flex
+                  justify-content-center
+                  align-items-center
+                  display-1 display-1
+                  border-top border-bottom border-5 border-dark
+                "
+              >
+                <svg
+                  class="nineSvg"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="90"
+                  height="90"
+                ></svg>
+              </div>
+              <div
+                data-num="4"
+                class="
+                  gridBox
+                  w-100
+                  d-flex
+                  justify-content-center
+                  align-items-center
+                  display-1
+                  border border-5 border-dark
+                "
+              >
+                <svg
+                  class="nineSvg"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="90"
+                  height="90"
+                ></svg>
+              </div>
+              <div
+                data-num="5"
+                class="
+                  gridBox
+                  w-100
+                  d-flex
+                  justify-content-center
+                  align-items-center
+                  display-1
+                  border-top border-bottom border-5 border-dark
+                "
+              >
+                <svg
+                  class="nineSvg"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="90"
+                  height="90"
+                ></svg>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="column d-flex justify-content-between">
+              <div
+                data-num="6"
+                class="
+                  gridBox
+                  w-100
+                  d-flex
+                  justify-content-center
+                  align-items-center
+                  display-1
+                "
+              >
+                <svg
+                  class="nineSvg"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="90"
+                  height="90"
+                ></svg>
+              </div>
+              <div
+                data-num="7"
+                class="
+                  gridBox
+                  w-100
+                  d-flex
+                  justify-content-center
+                  align-items-center
+                  display-1
+                  border-start border-end border-5 border-dark
+                "
+              >
+                <svg
+                  class="nineSvg"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="90"
+                  height="90"
+                ></svg>
+              </div>
+              <div
+                data-num="8"
+                class="
+                  gridBox
+                  w-100
+                  d-flex
+                  justify-content-center
+                  align-items-center
+                  display-1
+                "
+              >
+                <svg
+                  class="nineSvg"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="90"
+                  height="90"
+                ></svg>
+              </div>
+            </div>
+          </div>
+          <br />
+          <div class="turn fs-4 fw-bold mb-3">waiting for opponent...</div>
+          <button
+            class="start btn btn-primary w-50 fw-bold"
+            onClick="handleGameStart()"
+            disabled
+          >
+            Game Start
+          </button>
+          <button
+            class="restart btn btn-primary w-50 fw-bold"
+            onClick="handleRestart()"
+            style="visibility: hidden"
+          >
+            restart
+          </button>
+        </div>
+        <div class="col-lg-6">
+          <div class="chatroom bg-dark rounded p-2">
+            <ul
+              class="
+                message
+                bg-light
+                mb-2
+                rounded
+                list-unstyled
+                p-2
+                d-flex
+                flex-column
+              "
+            ></ul>
+            <div class="d-flex">
+              <input type="text" class="rounded-end" />
+              <button
+                class="send btn btn-primary fw-bold"
+                onClick="clientSend(event)"
+              >
+                Send
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <br />
+    <br />
+  </body>
+  <!-- <script src="../bootstrap.bundle.js"></script> -->
+  <script>
+    /**************************************chartroom******************************************/
+    const socket = io.connect();
+    let message = document.querySelector(".message");
+    let input = document.querySelector("input");
+    let userName = "";
+
+    (async function inputName() {
+      const { value: name } = await Swal.fire({
+        title: "Welcome!",
+        input: "text",
+        inputLabel: "Please input your name.",
+        inputValue: "", //default input on the screen
+        showCancelButton: false, //不顯示取消button
+        allowOutsideClick: false, //禁止點彈跳視窗外面取消
+        //user input validator
+        inputValidator: (value) => {
+          if (!value || value.length > 15) {
+            return "You need to write at least 1 and less than 15 characters!";
+          }
+        },
+      });
+
+      if (name) {
+        Swal.fire(`Hi, ${name}`);
+        userName = name;
+      }
+    })();
+    //send send message to server
+    function clientSend(e) {
+      //e.preventDefault();
+      //div.innerText = "client id: " + socket.id;
+      socket.emit("cm", { cid: socket.id, cmsg: input.value, cname: userName });
+      input.value = "";
+    }
+
+    //receive message from server
+    socket.on("sm", (data) => {
+      let li = document.createElement("li");
+
+      if (data.cname === userName) {
+        data.cname = userName;
+        li.style.color = "blue";
+        li.style.display = "d-flex";
+        li.classList.add("text-end");
+      }
+      li.innerText = `${data.cname}: ${data.message}`;
+
+      message.appendChild(li);
+    });
+
+    /**************************************game code******************************************/
+    let nineBox = document.querySelectorAll("div[data-num]");
+    let svg = document.querySelectorAll(".nineSvg");
+    let start = document.querySelector(".start");
+    let restart = document.querySelector(".restart");
+    let turn = document.querySelector(".turn");
+    let readyNum = 0; //確認是否兩人已按開始
+    let boxSymbol; //使用者分配到的符號 O or X
+    let pressDiv = []; //儲存使用者已經按過的Div
+    let turnRound = false; //判斷誰先攻
+    let gameOver = false; //確認遊戲是否結束
+    let gameWin = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6],
+    ];
+
+    function disabledAllDiv() {
+      nineBox.forEach((item) => {
+        item.classList.add("disabledDiv");
+      });
+    }
+
+    function enabledCorrespondingDiv() {
+      nineBox.forEach((item, idx) => {
+        //遊戲一開始時需要移除所有div disabled的狀態
+        if (pressDiv.length === 0) {
+          item.classList.remove("disabledDiv");
+        } else if (pressDiv[idx] !== "O" && pressDiv[idx] !== "X") {
+          item.classList.remove("disabledDiv");
+        }
+      });
+    }
+
+    //disabled all div on page load
+    disabledAllDiv();
+
+    //開始遊戲
+    function handleGameStart() {
+      socket.emit("start", { ready: true });
+      turn.innerText = "You are Ready...";
+      start.style.display = "none";
+    }
+
+    //確認遊戲是否結束
+    function checkGame() {
+      //儲存使用者自己按過的符號位置
+      let myNowSymbol = pressDiv
+        .map((n, idx) => {
+          if (n === boxSymbol) {
+            return idx;
+          }
+        })
+        .join("") //將陣列轉為字串(同時刪除空元素) ex: [,,2,5] => '25'
+        .split("") //將字串轉陣列 '25' => ['2','5']
+        .map(Number); //將陣列元素轉數值 ['2','5'] => [2,5]
+
+      //確認gameWin二維陣列中，是否有其中一個獲勝條件符合(some)
+      //確認每一個獲勝條件的元素(一維陣列)，是否存在於使用者按的陣列之中(every)
+      gameOver = gameWin.some((dim2) =>
+        dim2.every((dim1) => myNowSymbol.includes(dim1))
+      );
+
+      //當被按的div長度為9時且遊戲尚未結束，需判斷前面8個是否都不為undefined，用以判斷是否平手
+      let draw = false;
+      //如果未加!gameOver，當使用者第一個就按最後一格，此條件就會成立進來造成錯誤判斷
+      if (!gameOver && pressDiv.length === 9) {
+        draw = true;
+        for (let i = 0; i < 9; i++) {
+          if (pressDiv[i] === undefined) {
+            draw = false;
+          }
+        }
+      }
+
+      return { gameOver, draw };
+    }
+
+    function setupSymbol() {
+      //設定第一個人的符號, 0~99, +1後為 1~100
+      boxSymbol = (Math.floor(Math.random() * 100) + 1) % 2 === 0 ? "O" : "X";
+      //決定誰先攻
+      turnRound =
+        (Math.floor(Math.random() * 100) + 1) % 2 === 0 ? true : false;
+    }
+
+    //set style according user's turn
+    function setStyle(para) {
+      svg.forEach((n, idx) => {
+        //只要不是自己的回合且含有子元素的話都要反灰
+        if (para === "notMyturn") {
+          if (n.childNodes[0] != null) {
+            n.childNodes[0].classList.add("disabledSCL");
+          }
+          if (n.childNodes[1] != null) {
+            n.childNodes[1].classList.add("disabledSCL");
+          }
+        } else {
+          //若是自己的回合, 且為自己的符號則取消反灰
+          if (pressDiv[idx] === boxSymbol) {
+            if (n.childNodes[0] != null) {
+              n.childNodes[0].classList.remove("disabledSCL");
+            }
+            if (n.childNodes[1] != null) {
+              n.childNodes[1].classList.remove("disabledSCL");
+            }
+          }
+          //若是自己的回合, 且為對方的符號則反灰
+          else {
+            if (n.childNodes[0] != null) {
+              n.childNodes[0].classList.add("disabledSCL");
+            }
+            if (n.childNodes[1] != null) {
+              n.childNodes[1].classList.add("disabledSCL");
+            }
+          }
+        }
+      });
+    }
+
+    //按開始後確認對方是否也按開始
+    socket.on("enableStart", (m) => {
+      if (m.ready === true) {
+        readyNum++;
+        if (readyNum === 2) {
+          turn.innerText = "Start!!! Opponent's turn.";
+          if (turnRound === true) {
+            enabledCorrespondingDiv();
+            turn.innerText = "Start!!! Your turn.";
+          }
+          readyNum = 0;
+        }
+      }
+    });
+
+    //接收server回傳的人數
+    socket.on("roomContains", (n) => {
+      if (n.roomContains === 1) {
+        setupSymbol();
+      } else if (n.roomContains === 2) {
+        start.disabled = false;
+        turn.innerHTML = "Opponent is comming...<br />please press Game Start.";
+        //只有第一位已被設定資訊的使用者需要發資訊給對方
+        if (boxSymbol) {
+          socket.emit("gameInfo", { boxSymbol, turnRound });
+        } else {
+          //第二位使用者根據第一位的遊戲設定來反向設定
+          socket.on("gameInfo", (info) => {
+            boxSymbol = info.boxSymbol === "O" ? "X" : "O";
+            turnRound = info.turnRound ? false : true;
+          });
+        }
+      }
+    });
+
+    //when the opponent left the room
+    socket.on("leave", () => {
+      turn.innerHTML =
+        "Oh oh! your opponent has escaped.<br>Please refresh the page to rematch or close the game.";
+      disabledAllDiv();
+      start.style.visibility = "hidden";
+      restart.style.visibility = "hidden";
+    });
+
+    //create svg element by function and add attribute
+    function makeSVG(tag, attrs) {
+      let el = document.createElementNS("http://www.w3.org/2000/svg", tag);
+      for (var k in attrs) el.setAttribute(k, attrs[k]);
+      return el;
+    }
+
+    //send number & gameStatus to another user
+    nineBox.forEach((item) => {
+      item.addEventListener("click", (e) => {
+        let num = e.target.getAttribute("data-num");
+
+        //create a circle
+        let circle = makeSVG("circle", {
+          cx: 45,
+          cy: 45,
+          r: 35,
+          stroke: "black",
+          "stroke-width": 4,
+          fill: "#BBD4D3",
+        });
+
+        //create line1
+        let line1 = makeSVG("line", {
+          x1: 10,
+          y1: 10,
+          x2: 85,
+          y2: 85,
+          stroke: "black",
+          "stroke-width": 4,
+        });
+
+        //create line2
+        let line2 = makeSVG("line", {
+          x1: 10,
+          y1: 85,
+          x2: 85,
+          y2: 10,
+          stroke: "black",
+          "stroke-width": 4,
+        });
+
+        //check which svg should be used and record press div
+        if (boxSymbol === "O") {
+          svg[num].appendChild(circle);
+          pressDiv[num] = "O";
+        } else {
+          svg[num].appendChild(line1);
+          svg[num].appendChild(line2);
+          pressDiv[num] = "X";
+        }
+
+        nineBox[num].appendChild(svg[num]);
+
+        //disabled div 此處可透過下方的function直接全部disabled
+        //e.target.classList.add("disabledDiv");
+        setStyle("notMyturn");
+
+        //disabled circle & line1
+        //e.target.children[0].children[0].classList.add("disabledSCL");
+
+        //check if disabled line2
+        // if (e.target.children[0].children[1] != null) {
+        //   e.target.children[0].children[1].classList.add("disabledSCL");
+        // }
+
+        //after click, should disable all of the div, waiting for opponent
+        disabledAllDiv();
+
+        //after click, should check if the game is over?
+        let gameStatus = checkGame();
+        let draw = gameStatus.draw;
+        gameOver = gameStatus.gameOver;
+
+        socket.emit("clickNum", {
+          num,
+          gameOver,
+          draw,
+        });
+
+        if (gameOver || draw) {
+          turn.innerText = draw ? "It's a draw" : "You win!!!";
+          //disabled all div on page load
+          disabledAllDiv();
+          restart.style.visibility = "visible";
+
+          //遊戲結束將自己的符號取消反灰
+          svg.forEach((n, idx) => {
+            if (pressDiv[idx] === boxSymbol) {
+              if (n.childNodes[0] != null) {
+                n.childNodes[0].classList.remove("disabledSCL");
+              }
+              if (n.childNodes[1] != null) {
+                n.childNodes[1].classList.remove("disabledSCL");
+              }
+            }
+          });
+
+          //結束時變數初始化
+          readyNum = 0; //確認是否兩人已按開始
+          boxSymbol = null; //使用者分配到的符號 O or X
+          pressDiv = []; //儲存使用者已經按過的Div
+          turnRound = false; //判斷誰先攻
+          gameOver = false; //確認遊戲是否結束
+        } else {
+          turn.innerText = "Opponent's turn.";
+        }
+      });
+    });
+
+    //receive number from another user
+    socket.on("deliverNum", (clickNum) => {
+      //設定對手按的位置符號
+      if (boxSymbol === "O") {
+        pressDiv[clickNum.clickNum] = "X";
+      } else {
+        pressDiv[clickNum.clickNum] = "O";
+      }
+
+      enabledCorrespondingDiv();
+      //disable opponent press div 因為前面已經設定對手按過的符號，並且根據不是O或X的div 移除disabled狀態
+      //nineBox[clickNum.clickNum].classList.add("disabledDiv");
+
+      //create opponent symbol
+      //create a circle
+      let circle = makeSVG("circle", {
+        cx: 45,
+        cy: 45,
+        r: 35,
+        stroke: "black",
+        "stroke-width": 4,
+        fill: "#BBD4D3",
+      });
+
+      //create line1
+      let line1 = makeSVG("line", {
+        x1: 10,
+        y1: 10,
+        x2: 85,
+        y2: 85,
+        stroke: "black",
+        "stroke-width": 4,
+      });
+
+      //create line2
+      let line2 = makeSVG("line", {
+        x1: 10,
+        y1: 85,
+        x2: 85,
+        y2: 10,
+        stroke: "black",
+        "stroke-width": 4,
+      });
+
+      //check which svg should be used and record press div
+      if (boxSymbol !== "O") {
+        svg[clickNum.clickNum].appendChild(circle);
+        pressDiv[clickNum.clickNum] = "O";
+      } else {
+        svg[clickNum.clickNum].appendChild(line1);
+        svg[clickNum.clickNum].appendChild(line2);
+        pressDiv[clickNum.clickNum] = "X";
+      }
+
+      nineBox[clickNum.clickNum].appendChild(svg[clickNum.clickNum]);
+
+      setStyle("myTurn");
+
+      //check if the gameOver is true means you lose
+      if (clickNum.gameOver || clickNum.draw) {
+        turn.innerText = clickNum.draw ? "It's a draw" : "You lose.";
+        //disabled all div on page load
+        disabledAllDiv();
+        restart.style.visibility = "visible";
+
+        //結束時變數初始化
+        readyNum = 0; //確認是否兩人已按開始
+        boxSymbol = null; //使用者分配到的符號 O or X
+        pressDiv = []; //儲存使用者已經按過的Div
+        turnRound = false; //判斷誰先攻
+        gameOver = false; //確認遊戲是否結束
+      } else {
+        turn.innerText = "Your turn.";
+      }
+    });
+
+    /****************重新開始遊戲設定****************/
+    //重新開始遊戲
+    function handleRestart() {
+      //清除畫面
+      svg.forEach((eachSvg) => {
+        if (eachSvg.childNodes.length > 0) {
+          // eachSvg.childNodes.forEach((son) => {
+          //   //son.remove(); //因為第一個斜線被刪除後, 第二個會自動補為第一個元素, 導致第二個刪不掉
+          // });
+
+          eachSvg.childNodes[0].remove();
+          if (eachSvg.childNodes[0] != null) {
+            eachSvg.childNodes[0].remove();
+          }
+        }
+      });
+
+      //先按restart的玩家先設定符號和決定先後順序
+      if (!boxSymbol) {
+        turn.innerText = "You are ready...";
+        setupSymbol();
+        //第一位玩家設定後, 通知第二位玩家根據其資訊設定相反符號和順序
+        socket.emit("restart", { boxSymbol, turnRound });
+        restart.style.visibility = "hidden";
+      } else {
+        //第二位玩家按restart時，boxSymbox已設定, 故會走此邏輯, 再呼叫雙方開始遊戲
+        socket.emit("notifyRestart");
+        restart.style.visibility = "hidden";
+      }
+    }
+
+    //重新開始時，第二位按restart的玩家，被動透過server來呼叫通知設定資訊
+    socket.on("enableRestart", (rss) => {
+      boxSymbol = rss.boxSymbol === "O" ? "X" : "O";
+      turnRound = rss.turnRound ? false : true;
+    });
+
+    //第二位玩家呼叫雙方重新開始遊戲
+    socket.on("restartGame", () => {
+      turn.innerText = "Start!!! Opponent's turn.";
+      if (turnRound === true) {
+        enabledCorrespondingDiv();
+        turn.innerText = "Start!!! Your turn.";
+      }
+    });
+    /****************重新開始遊戲設定****************/
+
+    /****************keyboard event****************/
+    let body = document.body;
+    let send = document.querySelector(".send");
+    body.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        clientSend();
+        send.style.opacity = "0.3";
+      }
+    });
+
+    body.addEventListener("keyup", (event) => {
+      if (event.key === "Enter") {
+        send.style.opacity = "1";
+      }
+    });
+    /****************keyboard event****************/
+
+    /*增加回合制度*/
+  </script>
+</html>

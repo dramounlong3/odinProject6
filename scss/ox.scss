@@ -1,0 +1,75 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(to right, rgb(187, 212, 211), rgb(221, 221, 240));
+  color: rgb(46, 46, 46);
+  font-family: "Noto Sans", sans-serif;
+}
+
+header {
+  color: rgb(221, 221, 221);
+  font-family: "Righteous", cursive;
+  background-color: rgb(43, 43, 43);
+  filter: drop-shadow(12px 12px 7px rgba(0, 0, 0, 0.3));
+}
+
+button {
+  filter: drop-shadow(5px 5px 3px rgba(0, 0, 0, 0.3));
+}
+
+ul {
+  overflow-y: scroll;
+}
+
+.chatroom {
+  height: 25rem;
+}
+
+.message {
+  height: 21rem;
+}
+
+input {
+  width: 80%;
+}
+.send {
+  width: 20%;
+}
+
+div[data-num],
+svg,
+circle,
+line {
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+}
+
+svg,
+circle,
+line {
+  pointer-events: none;
+  filter: drop-shadow(12px 12px 7px rgba(0, 0, 0, 0.3));
+}
+
+.disabledDiv {
+  pointer-events: none;
+}
+
+.disabledSCL {
+  stroke: black;
+  opacity: 0.3;
+}
+
+.gridBox {
+  height: 6rem;
+}
+
+@media screen and (max-width: 500px) {
+  .gridBox {
+    height: 6rem;
+  }
+}

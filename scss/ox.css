@@ -1,0 +1,83 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: -webkit-gradient(linear, left top, right top, from(#bbd4d3), to(#ddddf0));
+  background: linear-gradient(to right, #bbd4d3, #ddddf0);
+  color: #2e2e2e;
+  font-family: "Noto Sans", sans-serif;
+}
+
+header {
+  color: #dddddd;
+  font-family: "Righteous", cursive;
+  background-color: #2b2b2b;
+  -webkit-filter: drop-shadow(12px 12px 7px rgba(0, 0, 0, 0.3));
+          filter: drop-shadow(12px 12px 7px rgba(0, 0, 0, 0.3));
+}
+
+button {
+  -webkit-filter: drop-shadow(5px 5px 3px rgba(0, 0, 0, 0.3));
+          filter: drop-shadow(5px 5px 3px rgba(0, 0, 0, 0.3));
+}
+
+ul {
+  overflow-y: scroll;
+}
+
+.chatroom {
+  height: 25rem;
+}
+
+.message {
+  height: 21rem;
+}
+
+input {
+  width: 80%;
+}
+
+.send {
+  width: 20%;
+}
+
+div[data-num],
+svg,
+circle,
+line {
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+}
+
+svg,
+circle,
+line {
+  pointer-events: none;
+  -webkit-filter: drop-shadow(12px 12px 7px rgba(0, 0, 0, 0.3));
+          filter: drop-shadow(12px 12px 7px rgba(0, 0, 0, 0.3));
+}
+
+.disabledDiv {
+  pointer-events: none;
+}
+
+.disabledSCL {
+  stroke: black;
+  opacity: 0.3;
+}
+
+.gridBox {
+  height: 6rem;
+}
+
+@media screen and (max-width: 500px) {
+  .gridBox {
+    height: 6rem;
+  }
+}
+/*# sourceMappingURL=ox.css.map */
